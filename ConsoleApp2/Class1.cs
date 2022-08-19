@@ -1,280 +1,492 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Collections;
 using System.Threading.Tasks;
+using System.Text;
+
 
 namespace ConsoleApp2
 {
-    class strdemo
+    public class invalidbinerynumber : Exception //exple 10
     {
-        static void Main(string[] args)
+        public invalidbinerynumber(string s) : base(s)
         {
-            string str = "HEllo C#";//keyword
-            string s = "Hello DotNet";//literal
-            string s1 = new string("Hello My programming");
-            int l = s1.Length;
-            Console.WriteLine("Length:" + l);
-
-            string str1 = "Hello";
-            string str2 = "Hello";
-            //Console.WriteLine(str1==str2);
-            //str1=str1+ str2;
-            //Console.WriteLine(str1==str2);
-            //Console.WriteLine(str1.GetHashCode()+" "+str2.GetHashCode());
-            //Console.WriteLine(str1=str2);
-            //str1 = str1 + "c#";
-            //Console.WriteLine(str1);
-            //Console.WriteLine(str1==str2);
-            //Console.WriteLine(str1.GetHashCode()+" "+str2.GetHashCode());
-            string st = string.Concat(str1, "Pune");
-            Console.WriteLine(st + " " + str1);
-
-            int x = s1.IndexOf('r');
-            Console.WriteLine(x);
-
-            int y = s1.LastIndexOf('r');
-            Console.WriteLine(y);
-
-            string s3 = s1.Substring(4);
-            Console.WriteLine(s3);
-
-            string s4 = s1.Substring(4, 7);
-            Console.WriteLine(s4);
-
-            string mystring = "java,c#,c++,python";
-            string[] s5 = mystring.Split(",");
-            foreach (string ss in s5)
-            {
-                Console.WriteLine(ss);
-            }
-
-            Console.WriteLine(string.Join(" ", "pune", " ", "Welcome"));
-
-            string s6 = "     pune    ";
-            Console.WriteLine(s6);
-            Console.WriteLine(s6.Trim());
-
-            Console.WriteLine(s1.ToUpper());
-            Console.WriteLine(s1.ToLower());
-
-            Console.WriteLine(s1[10]);
 
         }
     }
-    class methodstring
+    class binery
     {
-        static void Main(string[] args)
+        static void IsBinaryOrNot(int number)
         {
-            string str = "Hello";
-            string str1 = new string("hello");
-            Console.WriteLine(str == str1);
-            Console.WriteLine(str.Equals(str1));
+            bool isBinary = true;
 
-            int i = str.CompareTo(str1);
-            Console.WriteLine(i);
-        }
-    }
-    class reversestring//string convert char array reverse the string
-    {
-        static void Main(string[] args)
-        {
-            string str = "India is my Country";
-            char[] ch = str.ToCharArray();
-            int j = ch.Length - 1;
-            for (int i = 0; i < ch.Length / 2; i++)
-            {
-                char temp = ch[i];
-                ch[i] = ch[j];
-                ch[j] = temp;
-                j--;
-            }
-            Console.WriteLine(String.Join(" ", ch));
-            string st = new string(ch);
-            Console.WriteLine(st);
-        }
-    }
-    class reversestr
-    {
-        static void Main(string[] args)
-        {
-            string str = "India is my Country";
-            string reverse = "";
+            int copy = number;
 
-            for (int i = str.Length - 1; i >= 0; i--)
+            while (copy != 0)
             {
-                reverse = reverse + str[i];
-            }
-            Console.WriteLine(reverse);
-        }
-    }
-    class reverseword1
-    {
-        static void Main(string[] args)
-        {
-            string str = "c# is easy";
-            string[] str1 = str.Split(" ");
-            string reverse = "";
-            for (int i = 0; i < str1.Length; i++)
-            {
-                string word = str1[i];
-                string myword = "";
-                for (int j = word.Length - 1; j >= 0; j--)
+                int temp = copy % 10;
+
+                if (temp > 1)
                 {
-                    myword = myword + word[j];
+                    isBinary = false;
+                    break;
                 }
-                reverse = reverse + myword + " ";
-            }
-            Console.WriteLine(reverse);
-
-        }
-    }
-    class countword
-    {
-        static void Main(string[] args)
-        {
-            string str;
-            int count = 1, length = 0;
-            Console.WriteLine("enter a string");
-            str = Console.ReadLine();
-            while (length <= str.Length - 1)
-            {
-                if (str[length] == ' ' || str[length] == '\n' || str[length] == '\t')
+                else
                 {
-                    count++;
+                    copy = copy / 10;
                 }
-                length++;
             }
-            Console.WriteLine(count);
-        }
-    }
-    //class strbuild
-    //{
-    //    static void Main(string[] args)
-    //    {
-    //        string str = "HELLO";
-    //        StringBuilder sb = new StringBuilder(str);
-    //        sb.Append("PUNE");
-    //        Console.WriteLine(sb);
-    //    }
-    //}
-    class sb1
-    {
-        static void Main(string[] args)
-        {
-            string s = "Pune";
-            StringBuilder sb = new StringBuilder(s);
-            sb.AppendLine("City");
-            Console.WriteLine(sb);
-            sb.AppendLine(" for Fun");
-            Console.WriteLine(sb);
 
-            sb.Insert(6, "c#");
-            Console.WriteLine(sb);
-            sb.Remove(2, 6);
-            Console.WriteLine(sb);
-            //string s = "pune";
-            //StringBuilder sb = new StringBuilder(s);
-            //Console.WriteLine(sb);
-
-            //StringBuilder sb2 = new StringBuilder("pune");
-            //Console.WriteLine(sb2);
-
-            //Console.WriteLine(sb.Equals(sb2));
-            //Console.WriteLine(sb == sb2);
-
-
-
-
-
-
-        }
-    }
-    class palstring
-    {
-        static void Main(string[] args)
-        {
-            string str = "";
-            Console.WriteLine("enter the string");
-            str = Console.ReadLine();
-            char[] a = str.ToCharArray();
-            Array.Reverse(a);
-            string str_reverse = new string(a);
-            if (str.Equals(str_reverse))
+            if (isBinary)
             {
-                Console.WriteLine(str + "=it is pallendrom string");
+                Console.WriteLine(" is a binary number");
             }
             else
             {
-                Console.WriteLine(str + "=it is not pallendrom string");
+                throw new invalidbinerynumber("not binery number");
             }
         }
-    }
-    class patternword
-    {
         static void Main(string[] args)
         {
-            string str = "I like India country";
-            string[] s = str.Split(" ");
-            for (int i = 0; i < s.Length; i++)
+            try
             {
-                for (int j = 0; j <= i; j++)
-                {
-                    Console.Write(s[j] + " ");
-                }
-                Console.WriteLine();
+                IsBinaryOrNot(1111);
+            }
+            catch (invalidbinerynumber e)
+            {
+                Console.WriteLine(e);
+            }
 
+
+        }
+    }
+    class imeino //exp1
+    {
+
+        
+        static int sumDig(int n)
+        {
+            int a = 0;
+            while (n > 0)
+            {
+                a = a + n % 10;
+                n = n / 10;
+            }
+
+            return a;
+        }
+
+        static Boolean isValidIMEI(long n)
+        {
+
+            // Converting the number into
+            // String for finding length
+            String s = n.ToString();
+            int len = s.Length;
+
+            if (len != 15)
+                return false;
+
+            int sum = 0;
+            for (int i = len; i >= 1; i--)
+            {
+                int d = (int)(n % 10);
+
+                // Doubling every alternate
+                // digit
+                if (i % 2 == 0)
+                    d = 2 * d;
+
+                // Finding sum of the digits
+                sum += sumDig(d);
+                n = n / 10;
+            }
+
+            return (sum % 10 == 0);
+        }
+
+        // Driver code
+        public static void Main()
+        {
+
+           
+         
+            long n = 490154203237518L;
+
+            if (isValidIMEI(n))
+                Console.Write("Valid IMEI Code");
+            else
+                Console.Write("Invalid IMEI Code");
+
+        }
+    }
+    class Programmerg366//exp2
+    {
+        static void Main()
+        {
+            int i = 0;
+            int j = 0;
+
+            int[] arr1 = new int[5] { 5, 15, 25, 30, 47 };
+
+
+            int[] arr2 = new int[5] { 55, 60, 76, 83, 95 };
+         
+      
+            int[] merged = new int[10];
+
+            for (i = 0, j = 0; i < 5; i++)
+            {
+                merged[j++] = arr1[i];
+            }
+            for (i = 0; i < 5; i++)
+            {
+                merged[j++] = arr2[i];
+            }
+            Console.WriteLine("Elements of merged array = ");
+            for (i = 0; i < 10; i++)
+            {
+                Console.WriteLine("merged[" + (i) + "]: " + merged[i]);
+            }
+            Console.WriteLine();
+        }
+    }
+    class Pfgrffh //EXP 8
+    {
+        static void Main(string[] args)
+        {
+            int shift = 2;
+            string output = "";
+            Console.Write("Input: ");
+            string input = Console.ReadLine();
+            if (input != null)
+            {
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (input[i] < 65 || input[i] > 90)
+                    {
+                        throw new Exception("Only A-Z supported.");
+                    }
+                    int shifted = input[i] + shift;
+                    if (shifted > 90)
+                    {
+                        shifted = 65 + shifted - 91;
+                    }
+                    output = output + (char)shifted;
+                }
+            }
+            Console.WriteLine("Output: " + output);
+        }
+    }
+    class linkedlist//exple6
+    {
+        static public void Main()
+        {
+            LinkedList<String> my_list = new LinkedList<String>();
+            my_list.AddLast("Zoya");
+            my_list.AddLast("Shilpa");
+            my_list.AddLast("Rohit");
+            my_list.AddLast("Rohan");
+            my_list.AddLast("Juhi");
+
+            foreach (string str in my_list)
+            {
+                Console.WriteLine(str);
+            }
+            Console.WriteLine("after linked list reverse");
+            Stack<String> st = new Stack<String>(my_list);
+            foreach(string str in st)
+            {
+                Console.WriteLine(str);
             }
 
         }
 
+
     }
-    class strpattern
+    
+
+
+    class NDNDDK ///exp5
+    {
+
+
+        static void printReverse(String str)
+
+        {
+
+            
+
+            int i = 0;
+
+            for (i = 0; i < str.Length && str[i] != ' '; i++)
+
+                Console.Write(str[i]);
+
+
+
+           
+
+            String word = "";
+            for (; i < str.Length; i++)
+
+            {
+
+
+
+                if (str[i] != ' ')
+
+                    word += str[i];
+                else
+
+                {
+
+                    word = reverse(word);
+
+                    Console.Write(new StringBuilder(word).ToString() + " ");
+
+                    word = "";
+
+                }
+
+            }
+            Console.Write(word + " ");
+
+        }
+        static String reverse(String input)
+        {
+
+            char[] temparray = input.ToCharArray();
+
+            int left, right = 0;
+
+            right = temparray.Length - 1;
+
+
+            for (left = 0; left < right; left++, right--)
+
+            {
+
+              
+
+                char temp = temparray[left];
+
+                temparray[left] = temparray[right];
+
+                temparray[right] = temp;
+
+            }
+
+            return String.Join("", temparray);
+
+        }
+        public static void Main(String[] args)
+
+        {
+
+           
+           string str=Console.ReadLine();
+
+            printReverse(str);
+
+        }
+    }
+    class altermerdg4 //exp4
+    {
+        static void alternateMerge(int[] arr1, int[] arr2,
+                              int n1, int n2, int[] arr3)
+        {
+            int i = 0, j = 0, k = 0;
+
+
+            while (i < n1 && j < n2)
+            {
+                arr3[k++] = arr1[i++];
+                arr3[k++] = arr2[j++];
+            }
+
+
+            while (i < n1)
+                arr3[k++] = arr1[i++];
+
+
+            while (j < n2)
+                arr3[k++] = arr2[j++];
+        }
+        public static void Main()
+        {
+            int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6 };
+            int n1 = arr1.Length;
+
+            int[] arr2 = new int[] { 11, 22, 33, 44 };
+            int n2 = arr2.Length;
+
+            int[] arr3 = new int[n1 + n2];
+            alternateMerge(arr1, arr2, n1, n2, arr3);
+
+            Console.WriteLine("Array after merging");
+            for (int i = 0; i < n1 + n2; i++)
+                Console.Write(arr3[i] + " ");
+        }
+
+    }
+    class mobilefreq //exp7
+    {
+
+       
+        static int frequencyDigits(long n,
+                                   int d)
+        {
+            
+           int c = 0;
+            while (n > 0)
+            {
+
+
+                if (n % 10 == d)
+                    c++;
+
+                n = n / 10;
+            }
+            return c;
+        }
+        static public void Main(String[] args)
+        {
+
+            long N = 8975014275;
+            int D = 7;
+            Console.WriteLine(frequencyDigits(N, D));
+        }
+    }
+    class ENCODE //EX8
+
     {
         static void Main(string[] args)
         {
-            string str = "";
             Console.WriteLine("enter the string");
-            str = Console.ReadLine();
-            char[] a = str.ToCharArray();
-
-            for (int i = 0; i <= a.Length; i++)
+            string nm=Console.ReadLine();
+            int step = 2;
+            int newchar = 0;
+            foreach(char ch in nm)
             {
-                for (int j = 0; j <= i; j++)
+                newchar = ch + step;
+                if(newchar>90)
                 {
-                    Console.Write(str[j] + " ");
+                    newchar = newchar - 26;
                 }
-                Console.WriteLine();
+                else if(char.IsDigit(ch))
+                {
+                    newchar = ch;
+                    newchar++;
+                }
+                Console.Write((char)newchar);
 
             }
         }
     }
-    public interface Imoveable
-    {
-        static int x;
-        void show();
-    }
-    class car: Imoveable
-    {
-        public void show()
-        {
-          Imoveable.x=400;
-            Console.WriteLine("My interface method" + Imoveable.x);
-        }
-    }
-    class interfacedemo
+    class pattern9
     {
         static void Main(string[] args)
         {
-            Imoveable m = new car();
-                m.show();
+            int k = 5;
+            for(int i=5;i>=1;i--)
+            {
+                for(int j=1;j<=i;j++)
+                {
+                    if(i%2==1)
+                    {
+                        Console.Write(j);
+                    }
+                    else
+                        Console.Write((char)(64+j));
+                }
+                Console.WriteLine();
+            }
+            for(int i=2;i<=5;i++)
+            {
+                for(int j=1;j<=i;j++)
+                {
+                    if (i % 2 == 1)
+                    {
+                        Console.Write(j);
+                    }
+                    else
+                        Console.Write((char)(64 + j));
+
+                }
+                Console.WriteLine();
+            }
         }
     }
+    class demo17
+    {
+        static void Main(string[] args)
+        {
+         LinkedList<int> l1 = new LinkedList<int>();
+            l1.AddLast(1);
+            l1.AddLast(2);
+            l1.AddLast(3);
+            l1.AddLast(4);
+            l1.AddLast(5);
+            LinkedList<int> l2 = new LinkedList<int>();
+            l2.AddLast(11);
+            l2.AddLast(12);
+            l2.AddLast(13);
+            l2.AddLast(14);
+            l2.AddLast(15);
+          l2.AddLast(16);
+            LinkedList<int> l3 = new LinkedList<int>();
+            int i = 0;
+            int k = 0;
+            while(l3.Count<l1.Count+l2.Count)
+            {
+                if(k<l1.Count && k<l2.Count)
+                {
+                    l3.AddLast(l1.ElementAt(k));
+                    l3.AddLast(l2.ElementAt(k));
+                    k++;
+                }
+                else if(k<l1.Count)
+                {
+                    l3.AddLast(l2.ElementAt(k));
+                    k++;
+                }
+                else
+                {
+                    l3.AddLast(l2.ElementAt(k));
+                    k++;
+                }
+                i++;
+            }
+            foreach(int d in l1)
+                Console.Write(d+" ");
+            Console.WriteLine("-----------------------------");
 
+            foreach (int d in l2)
+                Console.Write(d + " ");
+            Console.WriteLine("-----------------------------");
 
+            foreach (int d in l3)
+                Console.Write(d + " ");
+            Console.WriteLine("-----------------------------");
+        }
+    }
+  
+   
 }
 
 
-   
-   
+
+
+
+
+
+
+
+
+
+
+
+
 
