@@ -19,13 +19,13 @@ namespace ConsoleApp2
             con = DBConnect.getConnection();
             SqlDataAdapter sda = new SqlDataAdapter("select*from studunt", con);
             DataSet ds = new DataSet();
-            sda.Fill(ds,"studunt");
-            foreach(DataRow dr in ds.Tables["studunt"].Rows)
+            sda.Fill(ds, "studunt");
+            foreach (DataRow dr in ds.Tables["studunt"].Rows)
             {
-                Console.WriteLine(dr[0]+" " + dr[1]+" " + dr[2]);
+                Console.WriteLine(dr[0] + " " + dr[1] + " " + dr[2]);
             }
 
-            
+
         }
     }
     class DisConnected

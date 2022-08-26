@@ -172,7 +172,7 @@ namespace ConsoleApp2
 
             }
             Console.WriteLine( );
-            Console.WriteLine(" "+strReverse);
+            Console.WriteLine(strReverse+" ");
         }
     }
     class Program
@@ -455,6 +455,36 @@ namespace ConsoleApp2
             }
             Console.WriteLine(newstr);
         }
+    }
+    class Sagitec
+    {
+        static void Main(string[] args)
+        {
+            int b = int.Parse(Console.ReadLine());
+            int[] arr = new int[b];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            if (b < 6)
+            {
+                Array.Reverse(arr);
+            }
+            int size = arr.Length - 1;
+            int max = 0;
+            int q = 1;
+            for (int i = 0; i < size; i++)
+            {
+                int h = arr[q] - arr[i];
+                if (max < h)
+                {
+                    max = h;
+                }
+                q++;
+            }
+            Console.WriteLine(max);
+        }
+
     }
 }
   

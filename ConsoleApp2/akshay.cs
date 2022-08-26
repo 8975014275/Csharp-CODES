@@ -171,7 +171,7 @@ namespace ConsoleApp2
             string result = "";
             for(int i=0;i<str.Length;i++)
             {
-                if(result.Contains(str[i]))
+                if(!result.Contains(str[i]))
                 {
                     result = result + str[i];
 
@@ -307,7 +307,7 @@ namespace ConsoleApp2
             }
             for (int i = 0; i < b.Length; i++)
             {
-                for(int j=0;j<b.Length;j++)
+                for(int j=i+1;j<b.Length;j++)
                 {
                     if (b[i] > b[j])
                     {

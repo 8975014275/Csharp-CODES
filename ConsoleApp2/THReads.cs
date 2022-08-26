@@ -85,5 +85,53 @@ namespace ConsoleApp2
 
 
     }
+    class progrthread
+    {
+        public void test1()
+        {
+            lock (this)
+            for (int i=0;i<=10;i++)
+            {
+                
+                Console.WriteLine("test1 is running"+i.ToString());
+
+            }
+        }
+        public void test2()
+        {
+            lock (this)
+            for (int i = 0; i <= 10; i++)
+            {
+                Console.WriteLine("test2 is running" + i.ToString());
+
+            }
+        }
+        public void test3()
+        {
+            lock (this)//for synchronus threading remember non static method
+            for (int i = 0; i <= 10; i++)
+            {
+                Console.WriteLine("test3 is running" + i.ToString());
+
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("main is started");
+            progrthread p = new progrthread();
+            Thread t1 = new Thread(p.test1);
+            Thread t2 = new Thread(p.test2);
+            Thread t3 = new Thread(p.test3);
+            t1.Start();
+            t1.Join();
+            t2.Start();
+            t2.Join();
+            t3.Start();
+            t3.Join();
+            Console.WriteLine("main is terminated");
+
+        }
+    }
+   
 }
  
