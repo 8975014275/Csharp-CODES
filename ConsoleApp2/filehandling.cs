@@ -136,6 +136,7 @@ namespace ConsoleApp2
                 FileStream fs = new FileStream(@"D:\dotnet mvc\TestFolder\TextDoc.txt", FileMode.Create, FileAccess.Write);
                 StreamWriter sw=new StreamWriter(fs);
                 sw.WriteLine("This is sample text in the file");
+                
                 sw.Close();
                 fs.Close();
                 Console.WriteLine("done");
@@ -164,10 +165,10 @@ namespace ConsoleApp2
         }
         static void Main(string[] args)
         {
-          //  Dept dept = new Dept { ID = 1, Name = "Hr", location = "pune" };
-          //  WriteToFile(dept);
-         // ReadFromFile();
-         WriteToFileUsingStream();
+            //Dept dept = new Dept { ID = 1, Name = "Hr", location = "pune" };
+            //WriteToFile(dept);
+            //ReadFromFile();
+            WriteToFileUsingStream();
             ReadFromFileUsingStream();
 
         }
