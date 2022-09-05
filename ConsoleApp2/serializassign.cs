@@ -22,38 +22,38 @@ namespace ConsoleApp2
     }
     internal class PROseri
     {
-        static void JsonSerializationWrite(Products pt)
-        {
-            try
+            static void JsonSerializationWrite(Products pt)
             {
-                FileStream fs = new FileStream(@"D:\dotnet mvc\TestFolder1\JsonFile1.json", FileMode.Create, FileAccess.Write);
-                JsonSerializer.Serialize<Products>(fs, pt);
-                Console.WriteLine("json  data added");
-                fs.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                try
+                {
+                    FileStream fs = new FileStream(@"D:\dotnet mvc\TestFolder1\JsonFile1.json", FileMode.Create, FileAccess.Write);
+                    JsonSerializer.Serialize<Products>(fs, pt);
+                    Console.WriteLine("json  data added");
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-        }
-        static void JsonSerializationRead()
-        {
-            try
-            {
-                FileStream fs = new FileStream(@"D:\dotnet mvc\TestFolder1\JsonFile1.json", FileMode.Open, FileAccess.Read);
-                Products pt = JsonSerializer.Deserialize<Products>(fs);
-                Console.WriteLine(pt.pId);
-                Console.WriteLine(pt.pName);
-                Console.WriteLine(pt.pPrice);
-                fs.Close();
             }
-            catch (Exception ex)
+            static void JsonSerializationRead()
             {
-                Console.WriteLine(ex.Message);
-            }
+                try
+                {
+                    FileStream fs = new FileStream(@"D:\dotnet mvc\TestFolder1\JsonFile1.json", FileMode.Open, FileAccess.Read);
+                    Products pt = JsonSerializer.Deserialize<Products>(fs);
+                    Console.WriteLine(pt.pId);
+                    Console.WriteLine(pt.pName);
+                    Console.WriteLine(pt.pPrice);
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-        }
+            }
 
 
         static void SoapSerializationWrite(Products pt)

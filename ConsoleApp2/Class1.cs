@@ -472,8 +472,57 @@ namespace ConsoleApp2
             Console.WriteLine("-----------------------------");
         }
     }
-  
-   
+    public class CheckDuckNo
+    {
+        public static void Main(string[] args)
+        {
+            int number = Convert.ToInt32(Console.ReadLine());
+            String strNo = number.ToString();
+            int l = strNo.Length;
+            int ctr = 0;
+            char chr;
+            for (int i = 1; i < l; i++)
+            {
+                chr = strNo[i];
+                if (chr == '0')
+                {
+                    ctr++;
+                    break;
+                }
+            }
+            char f = strNo[0];
+            if (ctr > 0 && (f == '0' || f != '0'))
+                Console.Write("Duck No.");
+            else
+                Console.Write("Not a duck No.");
+
+
+        }
+    }
+    class weired
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            if (input % 2 != 0)
+            {
+                Console.WriteLine("weird");
+            }
+            else if (input >= 2 && input <= 5)
+            {
+                Console.WriteLine("Not Weird");
+            }
+            else if (input >= 6 && input <= 20)
+            {
+                Console.WriteLine("Weird");
+            }
+            else if (input > 20)
+                Console.WriteLine("Not Weird");
+        }
+    }
+
+
+
 }
 
 
