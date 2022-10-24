@@ -31,6 +31,37 @@ namespace ConsoleApp2
 
         }
     }
+    interface IEmpoloyee//interface example=achieved multiple inheritance functionality
+    {
+
+        void show();
+
+    }
+    interface akshay
+    {
+        void greet();
+    }
+    class partrtimeemployee : IEmpoloyee, akshay
+    {
+        public void show()
+        {
+            Console.WriteLine("this is method of IEmpoloyee interface");
+        }
+        public void greet()
+        {
+            Console.WriteLine("i am akshay");
+        }
+    }
+    class pro
+    {
+        static void Main(string[] args)
+        {
+            partrtimeemployee p = new partrtimeemployee();
+            p.show();
+            p.greet();
+        }
+
+    }
 
 
 
@@ -160,6 +191,50 @@ namespace ConsoleApp2
 
         }
     }
+    class person//STATIC CONSTRUCTOR
+    {
+        public static string personname;
+        public static int personage;
+        public int num;
+        static person()
+        {
+            personname = "akshay";
+            personage = 21;
+
+            Console.WriteLine("static constructor invokes!");
+        }
+
+        public person()
+        {
+            num = 10;
+
+            Console.WriteLine("default constructor invokes=" + num);
+        }
+        public person(int a)
+        {
+
+
+            Console.WriteLine("default constructor invokes=" + a);
+        }
+
+        public void Getdetails()
+        {
+            Console.WriteLine("person name:" + personname);
+            Console.WriteLine("person age:" + personage);
+        }
+
+    }
+    class Program1
+    {
+        static void Main(string[] args)
+        {
+            person P = new person();
+            P.Getdetails();
+            person c = new person(89);
+            // person q=new person();static constructor called once time only and default called as per object
+
+        }
+    }
 
     class employee85//encapsulation concept
     {
@@ -183,37 +258,7 @@ namespace ConsoleApp2
 
         }
     }
-    interface IEmpoloyee//interface example=achieved multiple inheritance functionality
-    {
-
-        void show();
-
-    }
-    interface akshay
-    {
-        void greet();
-    }
-    class partrtimeemployee : IEmpoloyee, akshay
-    {
-        public void show()
-        {
-            Console.WriteLine("this is method of IEmpoloyee interface");
-        }
-        public void greet()
-        {
-            Console.WriteLine("i am akshay");
-        }
-    }
-    class pro
-    {
-        static void Main(string[] args)
-        {
-            partrtimeemployee p = new partrtimeemployee();
-            p.show();
-            p.greet();
-        }
-
-    }
+ 
     class Principal// HERARCHIECAL INHERITENCE
     {
         public void Monitor()
@@ -370,6 +415,119 @@ namespace ConsoleApp2
 
         }
     }
+    class Baseclass//CONSTRUCTOR IN INHERITANCE
+    {
+        public Baseclass(string message)
+        {
+            Console.WriteLine(message);
+        }
+    }
+    class Derrivedclass : Baseclass
+    {
+        public Derrivedclass() : base("HELLO AKSHAY")
+        {
+            Console.WriteLine("this is constructor of derrived class");
+        }
+    }
+    class pract
+    {
+        static void Main(string[] args)
+        {
+            Derrivedclass m = new Derrivedclass();
+        }
+    }
+    static class product1//...static class concept
+    {
+        public static int productid;
+        public static string productname;
+        public static int productprice;
+
+        static product1()
+        {
+            productid = 111;
+            productname = "table";
+            productprice = 2500;
+
+        }
+        public static void getdetatils()
+        {
+            Console.WriteLine("productid:" + productid);
+            Console.WriteLine("productname:" + productname);
+            Console.WriteLine("productprice:" + productprice);
+
+        }
+        public static void getdiscount()
+        {
+            int d_amount = productprice / 10;
+            Console.WriteLine("discount amount:" + d_amount);
+            Console.WriteLine("totalcost:" + (productprice - d_amount));
+        }
+
+    }
+    class prog
+    {
+        static void Main(string[] args)
+        {
+            product1.getdetatils();
+            product1.getdiscount();
+        }
+    }
+    class student//static keyword concept
+    {
+        public int rollno;
+        public string firstname;
+        public string lastname;
+        public int standard;
+        public static string schoolname = "DATTA VIDYALAYA";
+        public static int fees = 4000;
+
+        public void printfullname()
+        {
+            string fullname = this.firstname + " " + this.lastname;
+            Console.WriteLine("your full name {0}", fullname);
+        }
+        public static int getfees()
+        {
+            return fees;
+        }
+        public static int getfeesannualincrement(int fee)
+        {
+            return fee / 10;
+        }
+    }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            student a = new student();
+            a.rollno = 23;
+            a.firstname = "akshay";
+            a.lastname = "giri";
+            a.standard = 5;
+            student b = new student();
+            b.rollno = 25;
+            b.firstname = "vivek";
+            b.lastname = "giri";
+            b.standard = 6;
+            Console.WriteLine(a.rollno);
+            Console.WriteLine(a.firstname);
+            Console.WriteLine(a.lastname);
+            Console.WriteLine(a.standard);
+            a.printfullname();
+            Console.WriteLine(student.schoolname);
+            Console.WriteLine(student.getfees());
+            Console.WriteLine("///////////");
+            Console.WriteLine(b.rollno);
+            Console.WriteLine(b.firstname);
+            Console.WriteLine(b.lastname);
+            Console.WriteLine(b.standard);
+            b.printfullname();
+            Console.WriteLine(student.schoolname);
+            Console.WriteLine(student.getfees());
+            Console.WriteLine(student.getfeesannualincrement(3000));
+        }
+    }
+
 
 }
 

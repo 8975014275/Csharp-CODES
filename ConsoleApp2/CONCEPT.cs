@@ -7,148 +7,161 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    static class product1//...static class concept
+    public class calculato//method concept
     {
-        public static int productid;
-        public static string productname;
-        public static int productprice;
-
-        static product1()
+        int num1 = 10;
+        int num2 = 20;
+        int result;
+        void Add()
         {
-            productid = 111;
-            productname = "table";
-            productprice = 2500;
+            result = num1 + num2;
+            DisplayResult();
 
         }
-        public static void getdetatils()
+        void Sub()
         {
-            Console.WriteLine("productid:"+productid);
-            Console.WriteLine("productname:"+ productname);
-            Console.WriteLine("productprice:"+ productprice);
+            result = num1 - num2;
+            DisplayResult();
 
         }
-        public static void getdiscount()
+        void Mul()
         {
-            int d_amount = productprice / 10;
-            Console.WriteLine("discount amount:" + d_amount);
-            Console.WriteLine("totalcost:"+(productprice-d_amount));
-        }
-      
-    }
-    class prog
-    {
-        static void Main(string[] args)
-        {
-            product1.getdetatils();
-            product1.getdiscount();
-        }
-    }
-    class student//static keyword concept
-    {
-       public int rollno;
-       public string firstname;
-       public string lastname;
-       public int standard;
-       public static string schoolname = "DATTA VIDYALAYA";
-       public static int fees = 4000;
-        
-        public void printfullname()
-        {
-            string fullname=this.firstname+" "+this.lastname;
-            Console.WriteLine("your full name {0}",fullname);
-        }
-        public static int getfees()
-        {
-            return fees;
-        }
-        public static int getfeesannualincrement(int fee)
-        {
-            return fee/10;
-        }
-    }
-    class program
-    {
-        static void Main(string[] args)
-        {
-         student a=new student();
-            a.rollno = 23;
-            a.firstname = "akshay";
-            a.lastname = "giri";
-            a.standard = 5;
-            student b=new student();
-            b.rollno = 25;
-            b.firstname = "vivek";
-            b.lastname = "giri";
-            b.standard = 6;
-            Console.WriteLine(a.rollno);
-            Console.WriteLine(a.firstname);
-            Console.WriteLine(a.lastname);
-            Console.WriteLine(a.standard);
-            a.printfullname();
-            Console.WriteLine(student.schoolname);
-            Console.WriteLine(student.getfees());
-            Console.WriteLine("///////////");
-            Console.WriteLine(b.rollno);
-            Console.WriteLine(b.firstname);
-            Console.WriteLine(b.lastname);
-            Console.WriteLine(b.standard);
-            b.printfullname();
-            Console.WriteLine(student.schoolname);
-            Console.WriteLine(student.getfees());
-            Console.WriteLine(student.getfeesannualincrement(3000));
-        }    
-    }
-   
+            result = num1 * num2;
+            DisplayResult();
 
-   
-
-
-
-
-
-    class person//STATIC CONSTRUCTOR
-    {
-        public static string personname;
-        public static int personage;
-        public int num;
-        static person()
-        {
-            personname = "akshay";
-            personage = 21;
-
-            Console.WriteLine("static constructor invokes!");
         }
-        
-        public person()
+        void Div()
         {
-            num = 10;
-           
-            Console.WriteLine("default constructor invokes="+num);
+            result = num1 / num2;
+            DisplayResult();
+
         }
-        public person(int a)
+        void DisplayResult()
         {
             
+            Console.WriteLine(result);
 
-            Console.WriteLine("default constructor invokes=" + a);
         }
-        
-        public void Getdetails()
+        public static void Main(string[] args)
         {
-            Console.WriteLine("person name:"+personname);
-            Console.WriteLine("person age:"+personage);
+            calculato c = new calculato();
+            c.Add();
+
         }
-       
     }
-    class Program1
+    class recure//recursion concept:derrived from recur means repeatation,by virtue ofd its method called itself.
+    {             //it must call itself again and again.
+                   //method must have exit condition
+        int num = 1;
+        void counting()
+        {
+            if(num==11)
+            {
+                return;//control the course of the program execution.
+            }
+            Console.WriteLine(num);
+            num++;
+            counting();
+        }
+        static void Main(string[] args)
+        {
+            recure c = new recure();
+            c.counting();
+
+        }
+    }
+    class recfact//fact using recursion
+    {
+        int num = 5;
+        int result = 1;
+        int Factorial()
+        {
+            if(num==0)
+            {
+                return 1;
+            }
+            result = result * num;
+            num--;
+            Factorial();
+            return result;
+        }
+        static void Main(string[] args)
+        {
+            recfact re=new recfact();
+            int fact=re.Factorial();
+            Console.WriteLine("factorial is:"+fact);
+
+        }
+    }
+    class genmethod//GENERIC METHOD
+    {
+        //public static void ShowArray<T>(T[]arr)
+        //{
+        //    for (int i = 0; i <arr.Length ; i++)
+        //    {
+        //        Console.WriteLine(arr[i]);
+        //    }
+
+        //}
+       public static bool Check<T>(T a,T b)
+        {
+            bool c=a.Equals(b);
+            return c;
+        }
+    }
+    class prom
     {
         static void Main(string[] args)
         {
-            person P=new person();
-            person c = new person(89);
-            // person q=new person();static constructor called once time only and default called as per object
+            Console.WriteLine(genmethod.Check(10,10));
+            Console.WriteLine(genmethod.Check("aks","ali"));
+            Console.WriteLine(genmethod.Check('a','b'));
+            //int[] Number = new int[3];
+            //Number[0] = 1;
+            //Number[1] = 2;
+            //Number[2] = 3;
+
+            //string[] Names = { "aksh", "ara", "sam" };
+            //genmethod.ShowArray(Number);
+            //genmethod.ShowArray(Names);
+
+        }
+       
+
+    }
+    class genclass<T>
+    {
+        T box;
+        public genclass(T b)
+        {
+            this.box = b;
+        }
+        public T getbox()
+        {
+            return this.box;
+        }
+    }
+    class genprclass
+    {
+        static void Main(string[] args)
+        {
+            genclass<int> ge = new genclass<int>(6);
+            genclass<string> ge1= new genclass<string>("aksh");
+            Console.WriteLine(ge.getbox());
+            Console.WriteLine(ge1.getbox());
+
 
         }
     }
+  
+
+   
+
+
+
+
+
+   
     class eec//call by vallue
     {
         public void m1(int value)
@@ -323,6 +336,48 @@ namespace ConsoleApp2
         }
 
     }
+    //indexer concept important topic
+    class indexconn
+    {
+       private int[] age = new int[3];
+        public int this[int index]
+        {
+            set
+            {
+                if (index >= 0 && index < age.Length)
+                {
+                    if (value > 0)
+                    {
+                        age[index] = value;
+                    }
+                    else
+                    {
+                        Console.WriteLine("value is invalid");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("invalid index");
+                }
+            }
+            get
+            {
+                return age[index];
+            }
+          
+        }
+
+    }
+    class indexercon
+    {
+        static void Main(string[] args)
+        {
+            indexconn e=new indexconn();
+            e[2] = 9;
+            Console.WriteLine(e[2]);
+
+        }
+    }
 
     class error3
     {
@@ -346,27 +401,29 @@ namespace ConsoleApp2
         }
 
     }
-  
-    class Baseclass//CONSTRUCTOR IN INHERITANCE
+
+    enum Days//Enamuration
     {
-        public Baseclass(string message)
-        {
-            Console.WriteLine(message);
-        }
+        sunday,
+        monday,
+        tuesday,
+        wednesday,
+        thursday,
+        friday,
+        saturday,
     }
-    class Derrivedclass:Baseclass
-    {
-        public Derrivedclass() : base("HELLO AKSHAY")
-        {
-            Console.WriteLine("this is constructor of derrived class");
-        }
-    }
-    class pract
+    class sdg
     {
         static void Main(string[] args)
         {
-            Derrivedclass m=new Derrivedclass();
+
+            // Days myday = (Days)1;  explicit conversion
+            //int mday=(int)Days.friday; implicit conversion
+            Days birthday = Days.sunday;
+            Console.WriteLine(birthday);
         }
+
+
     }
     class pl
     {
@@ -453,10 +510,159 @@ namespace ConsoleApp2
                 Console.WriteLine("unverified");
         }
     }
+    //Dependancy injection using constructor
+    //interface IAccount
+    //{
+    //    void PrintDetais();
 
-   
-  
-  
+    //}
+    //class CurrentAccount: IAccount
+    //{
+    //    public void PrintDetais()
+    //    {
+    //        Console.WriteLine("details of current account");
+
+    //    }
+
+    //}
+    //class SavingAccount : IAccount
+    //{
+    //    public void PrintDetais()
+    //    {
+    //        Console.WriteLine("details of saving account");
+
+    //    }
+    //}
+    //class Account
+    //{
+    //    private IAccount account;
+    //    public Account(IAccount account)//parameterized constructor.
+    //    {
+    //        this.account = account;
+    //    }
+    //    public void PrintAccount()
+    //    {
+    //        account.PrintDetais();
+
+    //    }
+    //}
+    //class programdi
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        IAccount CA=new CurrentAccount();
+    //        Account a=new Account(CA);
+    //        a.PrintAccount();
+
+    //        IAccount sa = new SavingAccount();
+    //        Account a2 = new Account(sa);
+    //        a2.PrintAccount();
+
+
+    //    }
+    //}
+
+    ////propertry injection
+
+    //public  interface IAccount
+    //{
+    //    void PrintDetais();
+
+    //}
+    //class CurrentAccount : IAccount
+    //{
+    //    public void PrintDetais()
+    //    {
+    //        Console.WriteLine("details of current account");
+
+    //    }
+
+    //}
+    //class SavingAccount : IAccount
+    //{
+    //    public void PrintDetais()
+    //    {
+    //        Console.WriteLine("details of saving account");
+
+    //    }
+    //}
+    //class Account
+    //{
+    //    public IAccount account { get; set; }//using property
+
+    //    public void PrintAccount()
+    //    {
+    //        account.PrintDetais();
+
+    //    }
+    //}
+    //class programdi
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Account sa = new Account();
+    //        sa.account=new SavingAccount();
+    //        sa.PrintAccount();
+
+    //        Account ca = new Account();
+    //        ca.account = new CurrentAccount();
+    //        ca.PrintAccount();
+
+    //    }
+    //}
+
+
+    //method injection
+    public interface IAccount
+    {
+        void PrintDetais();
+
+    }
+    class CurrentAccount : IAccount
+    {
+        public void PrintDetais()
+        {
+            Console.WriteLine("details of current account");
+
+        }
+
+    }
+    class SavingAccount : IAccount
+    {
+        public void PrintDetais()
+        {
+            Console.WriteLine("details of saving account");
+
+        }
+    }
+    class Account
+    {
+       
+        public void PrintAccount(IAccount account)
+        {
+            account.PrintDetais();
+
+        }
+    }
+    class programdi
+    {
+        static void Main(string[] args)
+        {
+            Account sa = new Account();
+            sa.PrintAccount(new SavingAccount());
+          
+
+            Account ca = new Account();
+            ca.PrintAccount ( new CurrentAccount());
+           
+
+        }
+    }
+
+
+
+
+
 
 
 

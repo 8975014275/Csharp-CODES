@@ -22,6 +22,26 @@ namespace ConsoleApp2
             }
         }
     }
+    class fibonnacci
+    {
+        static void Main(string[] args)
+        {
+            int a = 0;
+            int b = 1;
+            int c;
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            for (int i = 0; i < 10; i++)
+            {
+                c = a + b;
+                Console.WriteLine(c);
+                a = b;
+                b = c;
+
+            }
+
+        }
+    }
     class upperlower
     {
         static void Main(string[] args)
@@ -323,7 +343,52 @@ namespace ConsoleApp2
 
         }
     }
-   
+    class frequency
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[5];
+            Console.WriteLine("enter the array");
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < a.Length; i++)
+            {
+                int count = 1;
+                bool isvisited = false;
+                for (int k = i - 1; k >= 0; k--)
+                {
+                    if (a[k] == a[i])
+                    {
+                        isvisited = true;
+                        break;
+                    }
+                }
+                if (isvisited == false)
+                {
+                    for (int j = i + 1; j < a.Length; j++)
+                    {
+                        if (a[i] == a[j])
+                        {
+
+                            count++;
+                        }
+                       
+
+                    }
+                    if (count == 1)
+                    {
+                        Console.WriteLine(a[i] + " " + count);
+                    }
+
+
+                    // Console.WriteLine(a[i] + " " + count);
+                }
+            }
+        }
+    }
+
 
 
 
